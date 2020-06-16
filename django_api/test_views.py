@@ -2,7 +2,7 @@
 Purpose: Data types used in DataDisca applications are defined here
 
 Developers:
-<Your Name(s)>
+<Khushbu Patel>
 
 Sponsor: DataDisca Pty Ltd. Australia
 https://github.com/DataDisca

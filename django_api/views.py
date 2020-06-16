@@ -58,6 +58,7 @@ def check_auth(request):
 def login(request):
     username = request.data.get("username")
     password = request.data.get("password")
+
     if username is None or password is None:
         return Response({'error': 'Please provide both username and password'},
                         status=HTTP_400_BAD_REQUEST)
@@ -101,7 +102,7 @@ class ExampleModelLessView(viewsets.ViewSet):
         else:
             return Response({'error': 'invalid data'})
 
-    def create(self,request):
+    def create(self, request):
         data = request.data.dict()
         print(data)
         return Response(status=HTTP_201_CREATED)

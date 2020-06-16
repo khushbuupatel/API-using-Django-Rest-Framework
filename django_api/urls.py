@@ -17,20 +17,22 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from . import views
+from analysis.urls import router as analysis_router
+
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'items', views.ItemListViewSet)
 router.register(r'modelless', views.ExampleModelLessView, basename='modelless')
+router.registry.extend(analysis_router.registry)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('login', views.login),
     path('logout', views.logout),
     path('check_auth', views.check_auth),
-    #    path('post_list', views.post_list, name='post_list'),
-
+    path('password/', include('app_user.urls')),
+    path('', include(router.urls))
 ]
